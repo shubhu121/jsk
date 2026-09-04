@@ -1,6 +1,5 @@
 {
-  "name": "Janmashtami Dahi Handi 3D",
+  "name": "jsk",
   "description": "Interactive 3D WebGL Janmashtami celebration and Dahi Handi pyramid experience powered by Three.js.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "requestFramePermissions": []
 }

@@ -211,6 +211,36 @@ class FestiveAudioEngine {
     this.playSnapNoise(0.9, 0.25);
   }
 
+  // Sparkling joyful cheering pop-up audio effect (chime triad + mini crowd cheer)
+  public playCheerPop() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    // Harmonious ascending triad (E5, G#5, B5, E6)
+    const notes = [659.25, 830.61, 987.77, 1318.51];
+    notes.forEach((freq, idx) => {
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, t + idx * 0.04);
+
+      gain.gain.setValueAtTime(0.001, t + idx * 0.04);
+      gain.gain.linearRampToValueAtTime(0.16 / (idx + 1), t + idx * 0.04 + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + idx * 0.04 + 0.35);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(t + idx * 0.04);
+      osc.stop(t + idx * 0.04 + 0.38);
+    });
+
+    // Cheerful mini clap/cheer noise
+    this.playSnapNoise(0.08, 0.12);
+  }
+
   // Pot break crash & butter splash
   public playPotBreakSound() {
     if (this.isMuted) return;

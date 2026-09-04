@@ -144,7 +144,7 @@ export default function JanmashtamiPage() {
 
         {/* Minimal 3D Hint */}
         <p className="text-[11px] font-medium tracking-wide text-amber-900/50 pointer-events-none">
-          Drag to rotate 3D view • Scroll to zoom
+          Click crowd & Gopalas to cheer • Drag to rotate • Scroll to zoom
         </p>
       </div>
     </main>
